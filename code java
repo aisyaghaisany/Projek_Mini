@@ -1,0 +1,73 @@
+
+import java.util.Scanner;
+
+class Mahasiswa {
+    String nama;
+    String nim;
+    double nilai;
+
+    // Constructor
+    Mahasiswa(String nama, String nim, double nilai) {
+        this.nama = nama;
+        this.nim = nim;
+        this.nilai = nilai;
+    }
+
+    // Method untuk menampilkan data mahasiswa
+    void tampilkanData() {
+        System.out.println("Nama       : " + nama);
+        System.out.println("NIM        : " + nim);
+        System.out.println("Nilai      : " + nilai);
+        cekKelulusan();
+        System.out.println("----------------------------");
+    }
+
+    // Method untuk mengecek kelulusan
+    void cekKelulusan() {
+        if (nilai >= 60) {
+            System.out.println("Keterangan : LULUS");
+        } else {
+            System.out.println("Keterangan : TIDAK LULUS");
+        }
+    }
+}
+
+public class DataMahasiswa {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        Mahasiswa[] mahasiswa = new Mahasiswa[3];
+
+        System.out.println("================================");
+        System.out.println("     PROGRAM DATA MAHASISWA");
+        System.out.println("================================");
+
+        // Input data 3 mahasiswa
+        for (int i = 0; i < mahasiswa.length; i++) {
+            System.out.println("\nData Mahasiswa ke-" + (i + 1));
+
+            System.out.print("Masukkan nama  : ");
+            String nama = input.nextLine();
+
+            System.out.print("Masukkan NIM   : ");
+            String nim = input.nextLine();
+
+            System.out.print("Masukkan nilai : ");
+            double nilai = Double.parseDouble(input.nextLine());
+
+            mahasiswa[i] = new Mahasiswa(nama, nim, nilai);
+        }
+
+        // Menampilkan seluruh data mahasiswa
+        System.out.println("\n================================");
+        System.out.println("       HASIL DATA MAHASISWA");
+        System.out.println("================================");
+
+        for (int i = 0; i < mahasiswa.length; i++) {
+            System.out.println("\nMahasiswa ke-" + (i + 1));
+            mahasiswa[i].tampilkanData();
+        }
+
+        input.close();
+    }
+}
